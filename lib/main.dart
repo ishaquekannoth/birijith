@@ -1,4 +1,4 @@
-import 'package:brijith/onboarding.dart';
+import 'package:brijith/pages/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,12 +13,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Brijith App',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.deepPurple,
       ),
-      home: const OnBoard(),
+      home: const HomeView(),
     );
   }
 }
-
-
-
