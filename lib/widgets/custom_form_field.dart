@@ -19,6 +19,7 @@ class CustomFormField extends StatelessWidget {
     return Padding(
       padding: padding,
       child: TextFormField(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           controller: controller,
           inputFormatters: [
             LengthLimitingTextInputFormatter(8),
@@ -51,8 +52,6 @@ class CustomFormField extends StatelessWidget {
           validator: (value) {
             if (value == '' || value == null) {
               return "$hintText Cant be empty";
-            } else if (value.isEmpty) {
-              return "Invalid Data";
             } else {
               return null;
             }
