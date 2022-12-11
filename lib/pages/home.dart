@@ -40,7 +40,7 @@ class HomeView extends StatelessWidget {
                         child: SizedBox(
                             height: 80,
                             child: CustomFormField(
-                              hintText: "Customer Qty",
+                              hintText: "Order",
                               controller: controller.customerRequestedQty.value,
                             )))
                   ],
@@ -64,7 +64,7 @@ class HomeView extends StatelessWidget {
                         child: SizedBox(
                             height: 80,
                             child: CustomFormField(
-                              hintText: "Market Rate",
+                              hintText: "Rate",
                               controller: controller.marketRate.value,
                             )))
                   ],
@@ -95,7 +95,7 @@ class HomeView extends StatelessWidget {
                 )),
               ),
               SizedBox(
-                height: size.height * 0.15,
+                height: size.height * 0.2,
                 child: Column(
                   children: [
                     const Padding(
@@ -114,7 +114,7 @@ class HomeView extends StatelessWidget {
                               child: SizedBox(
                             height: 80,
                             child: CustomFormField(
-                              controller: controller.machinePaperSize.value[0],
+                              controller: controller.machinePaperSize[0],
                               hintText: "Height",
                             ),
                           )),
@@ -130,7 +130,7 @@ class HomeView extends StatelessWidget {
                               child: SizedBox(
                             height: 80,
                             child: CustomFormField(
-                              controller: controller.machinePaperSize.value[1],
+                              controller: controller.machinePaperSize[1],
                               hintText: "Width",
                             ),
                           ))
@@ -141,7 +141,7 @@ class HomeView extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 100,
+                height: size.height * 0.2,
                 child: Column(
                   children: [
                     const Padding(
@@ -160,8 +160,7 @@ class HomeView extends StatelessWidget {
                               child: SizedBox(
                             height: 80,
                             child: CustomFormField(
-                              controller:
-                                  controller.requestedPaperSize.value[0],
+                              controller: controller.requestedPaperSize[0],
                               hintText: "Height",
                             ),
                           )),
@@ -177,8 +176,7 @@ class HomeView extends StatelessWidget {
                               child: SizedBox(
                             height: 80,
                             child: CustomFormField(
-                              controller:
-                                  controller.requestedPaperSize.value[1],
+                              controller: controller.requestedPaperSize[1],
                               hintText: "Width",
                             ),
                           ))
@@ -213,7 +211,7 @@ class HomeView extends StatelessWidget {
                 )),
               ),
               Obx(() => Container(
-                    height: size.height * .15,
+                    height: size.height * .3,
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     width: size.width,
                     decoration: const BoxDecoration(
@@ -224,71 +222,83 @@ class HomeView extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Column(
-                              children: [
-                                const Text("Rate Per Sheets"),
-                                Text(
-                                  controller.ratePerSheet.value,
-                                  style: commonTextStyle.copyWith(
-                                      overflow: TextOverflow.ellipsis),
-                                ),
-                              ],
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  const Text("Rate Per Sheets"),
+                                  Text(
+                                    controller.ratePerSheet.value,
+                                    style: commonTextStyle.copyWith(
+                                        overflow: TextOverflow.ellipsis),
+                                  ),
+                                ],
+                              ),
                             ),
-                            Column(
-                              children: [
-                                const Text("Calculated UP's "),
-                                Text(
-                                  controller.ups.value,
-                                  style: commonTextStyle.copyWith(
-                                      overflow: TextOverflow.ellipsis),
-                                ),
-                              ],
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  const Text("Calculated UP's "),
+                                  Text(
+                                    controller.ups.value,
+                                    style: commonTextStyle.copyWith(
+                                        overflow: TextOverflow.ellipsis),
+                                  ),
+                                ],
+                              ),
                             ),
-                            Column(
-                              children: [
-                                const Text("Required Sheets"),
-                                Text(
-                                  controller.requiredSheets.value,
-                                  style: commonTextStyle.copyWith(
-                                      overflow: TextOverflow.ellipsis),
-                                )
-                              ],
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  const Text("Required Sheets"),
+                                  Text(
+                                    controller.requiredSheets.value,
+                                    style: commonTextStyle.copyWith(
+                                        overflow: TextOverflow.ellipsis),
+                                  )
+                                ],
+                              ),
                             ),
                           ],
                         ),
                         const SizedBox(
                           height: 20,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Column(
-                              children: [
-                                const Padding(
-                                  padding: EdgeInsets.only(bottom: 8.0),
-                                  child: Text("Total Amount"),
+                        Expanded(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  children: [
+                                    const Padding(
+                                      padding: EdgeInsets.only(bottom: 8.0),
+                                      child: Text("Total Amount"),
+                                    ),
+                                    Text(
+                                      controller.result.value,
+                                      style: commonTextStyle.copyWith(
+                                          overflow: TextOverflow.ellipsis),
+                                    ),
+                                  ],
                                 ),
-                                Text(
-                                  controller.result.value,
-                                  style: commonTextStyle.copyWith(
-                                      overflow: TextOverflow.ellipsis),
+                              ),
+                              Expanded(
+                                child: Column(
+                                  children: [
+                                    const Padding(
+                                      padding: EdgeInsets.only(bottom: 8.0),
+                                      child: Text("Per Copy"),
+                                    ),
+                                    Text(
+                                      controller.ratePerCopy.value,
+                                      style: commonTextStyle.copyWith(
+                                          overflow: TextOverflow.ellipsis),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                const Padding(
-                                  padding: EdgeInsets.only(bottom: 8.0),
-                                  child: Text("Per Copy"),
-                                ),
-                                Text(
-                                  controller.ratePerCopy.value,
-                                  style: commonTextStyle.copyWith(
-                                      overflow: TextOverflow.ellipsis),
-                                ),
-                              ],
-                            ),
-                          ],
+                              ),
+                            ],
+                          ),
                         )
                       ],
                     ),
