@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ishaq.brijith">
    <application
-        android:label="brijith"
+        android:label="broApp"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

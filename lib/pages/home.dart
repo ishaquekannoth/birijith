@@ -211,7 +211,7 @@ class HomeView extends StatelessWidget {
                 )),
               ),
               Obx(() => Container(
-                    height: size.height * .3,
+                    height: size.height * .25,
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     width: size.width,
                     decoration: const BoxDecoration(
@@ -225,7 +225,8 @@ class HomeView extends StatelessWidget {
                             Expanded(
                               child: Column(
                                 children: [
-                                  const Text("Rate Per Sheets"),
+                                  const Text("Rate Per Sheets",
+                                      textAlign: TextAlign.center),
                                   Text(
                                     controller.ratePerSheet.value,
                                     style: commonTextStyle.copyWith(
@@ -237,7 +238,8 @@ class HomeView extends StatelessWidget {
                             Expanded(
                               child: Column(
                                 children: [
-                                  const Text("Calculated UP's "),
+                                  const Text("Calculated UP's ",
+                                      textAlign: TextAlign.center),
                                   Text(
                                     controller.ups.value,
                                     style: commonTextStyle.copyWith(
@@ -249,7 +251,8 @@ class HomeView extends StatelessWidget {
                             Expanded(
                               child: Column(
                                 children: [
-                                  const Text("Required Sheets"),
+                                  const Text("Required Sheets",
+                                      textAlign: TextAlign.center),
                                   Text(
                                     controller.requiredSheets.value,
                                     style: commonTextStyle.copyWith(
@@ -303,11 +306,14 @@ class HomeView extends StatelessWidget {
                       ],
                     ),
                   )),
-              ElevatedButton(
-                  onPressed: () {
-                    controller.onCalculateButtonClick();
-                  },
-                  child: const Text("Calculate"))
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: ElevatedButton(
+                    onPressed: () {
+                      controller.onCalculateButtonClick();
+                    },
+                    child: const Text("Calculate")),
+              )
             ],
           ),
         ),
