@@ -26,13 +26,21 @@ class HomeView extends StatelessWidget {
                 child: SizedBox(
                     child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Flexible(
-                        child: Text(
-                      "Customer Requested QTY",
-                      style: commonTextStyle,
+                  children: [
+                    const Flexible(
+                        child: Padding(
+                      padding: EdgeInsets.only(bottom: 20.0),
+                      child: Text(
+                        "Customer Requested QTY",
+                        style: commonTextStyle,
+                      ),
                     )),
-                    Flexible(child: CustomFormField())
+                    Flexible(
+                        child: SizedBox(
+                            height: 80,
+                            child: CustomFormField(
+                              controller: controller.customerRequestedQty.value,
+                            )))
                   ],
                 )),
               ),
@@ -41,13 +49,21 @@ class HomeView extends StatelessWidget {
                 child: SizedBox(
                     child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Flexible(
-                        child: Text(
-                      "Current Market Rate",
-                      style: commonTextStyle,
+                  children: [
+                    const Flexible(
+                        child: Padding(
+                      padding: EdgeInsets.only(bottom: 20.0),
+                      child: Text(
+                        "Current Market Price",
+                        style: commonTextStyle,
+                      ),
                     )),
-                    Flexible(child: CustomFormField())
+                    Flexible(
+                        child: SizedBox(
+                            height: 80,
+                            child: CustomFormField(
+                              controller: controller.marketRate.value,
+                            )))
                   ],
                 )),
               ),
@@ -56,56 +72,64 @@ class HomeView extends StatelessWidget {
                 child: SizedBox(
                     child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Flexible(
-                        child: Text(
-                      "GSM",
-                      style: commonTextStyle,
+                  children: [
+                    const Flexible(
+                        child: Padding(
+                      padding: EdgeInsets.only(bottom: 20.0),
+                      child: Text(
+                        "GSM",
+                        style: commonTextStyle,
+                      ),
                     )),
-                    Flexible(child: CustomFormField())
+                    Flexible(
+                        child: SizedBox(
+                            height: 80,
+                            child: CustomFormField(
+                              controller: controller.gsm.value,
+                            )))
                   ],
                 )),
               ),
               SizedBox(
-                height: size.height * 0.16,
+                height: size.height * 0.15,
                 child: Column(
                   children: [
                     const Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: EdgeInsets.symmetric(horizontal: 8.0),
                       child: Text(
-                        "Paper Size To Feed On the Machine",
+                        "Paper To Machine",
                         style: commonTextStyle,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Flexible(
-                              flex: 1,
-                              child: CustomFormField(
-                                controller:
-                                    controller.machinePaperSize.value[0],
-                                hintText: "Height",
-                              )),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          const Text(
-                            "X",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                          const SizedBox(
-                            width: 10,
+                              child: SizedBox(
+                            height: 80,
+                            child: CustomFormField(
+                              controller: controller.machinePaperSize.value[0],
+                              hintText: "Height",
+                            ),
+                          )),
+                          const Padding(
+                            padding: EdgeInsets.only(bottom: 25),
+                            child: Text(
+                              "X",
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold),
+                            ),
                           ),
                           Flexible(
-                              flex: 1,
-                              child: CustomFormField(
-                                controller:
-                                    controller.machinePaperSize.value[1],
-                                hintText: "Width",
-                              ))
+                              child: SizedBox(
+                            height: 80,
+                            child: CustomFormField(
+                              controller: controller.machinePaperSize.value[1],
+                              hintText: "Width",
+                            ),
+                          ))
                         ],
                       ),
                     ),
@@ -113,46 +137,65 @@ class HomeView extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: size.height * 0.16,
+                height: 100,
                 child: Column(
                   children: [
                     const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text("Customer Requested Size",
-                          style: commonTextStyle),
+                      padding: EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Text(
+                        "Customer Required dimensions",
+                        style: commonTextStyle,
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Flexible(
-                              flex: 1,
-                              child: CustomFormField(
-                                controller:
-                                    controller.requestedPaperSize.value[0],
-                              )),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          const Text(
-                            "X",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                          const SizedBox(
-                            width: 10,
+                              child: SizedBox(
+                            height: 80,
+                            child: CustomFormField(
+                              controller:
+                                  controller.requestedPaperSize.value[0],
+                              hintText: "Height",
+                            ),
+                          )),
+                          const Padding(
+                            padding: EdgeInsets.only(bottom: 25),
+                            child: Text(
+                              "X",
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold),
+                            ),
                           ),
                           Flexible(
-                              flex: 1,
-                              child: CustomFormField(
-                                  controller:
-                                      controller.requestedPaperSize.value[1]))
+                              child: SizedBox(
+                            height: 80,
+                            child: CustomFormField(
+                              controller:
+                                  controller.requestedPaperSize.value[1],
+                              hintText: "Width",
+                            ),
+                          ))
                         ],
                       ),
                     ),
                   ],
                 ),
               ),
+              Obx(() => Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  width: size.width,
+                  decoration:
+                      const BoxDecoration(border: Border(), color: Colors.red),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(controller.ratePerSheet.value),
+                      Text(controller.ups.value),
+                    ],
+                  ))),
               TextButton(
                   onPressed: () {
                     controller.onCalculateButtonClick();
