@@ -19,6 +19,7 @@ class HomeView extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Form(
+          key: controller.formKey,
           child: Column(
             children: [
               Padding(
@@ -39,6 +40,7 @@ class HomeView extends StatelessWidget {
                         child: SizedBox(
                             height: 80,
                             child: CustomFormField(
+                              hintText: "Customer Qty",
                               controller: controller.customerRequestedQty.value,
                             )))
                   ],
@@ -62,6 +64,7 @@ class HomeView extends StatelessWidget {
                         child: SizedBox(
                             height: 80,
                             child: CustomFormField(
+                              hintText: "Market Rate",
                               controller: controller.marketRate.value,
                             )))
                   ],
@@ -85,6 +88,7 @@ class HomeView extends StatelessWidget {
                         child: SizedBox(
                             height: 80,
                             child: CustomFormField(
+                              hintText: "GSM",
                               controller: controller.gsm.value,
                             )))
                   ],
@@ -184,19 +188,112 @@ class HomeView extends StatelessWidget {
                   ],
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SizedBox(
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Flexible(
+                        child: Padding(
+                      padding: EdgeInsets.only(bottom: 20.0),
+                      child: Text(
+                        "Extras",
+                        style: commonTextStyle,
+                      ),
+                    )),
+                    Flexible(
+                        child: SizedBox(
+                            height: 80,
+                            child: CustomFormField(
+                              hintText: "Xtras",
+                              controller: controller.extras.value,
+                            )))
+                  ],
+                )),
+              ),
               Obx(() => Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  width: size.width,
-                  decoration:
-                      const BoxDecoration(border: Border(), color: Colors.red),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(controller.ratePerSheet.value),
-                      Text(controller.ups.value),
-                    ],
-                  ))),
-              TextButton(
+                    height: size.height * .15,
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    width: size.width,
+                    decoration: const BoxDecoration(
+                      border: Border(),
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Column(
+                              children: [
+                                const Text("Rate Per Sheets"),
+                                Text(
+                                  controller.ratePerSheet.value,
+                                  style: commonTextStyle.copyWith(
+                                      overflow: TextOverflow.ellipsis),
+                                ),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                const Text("Calculated UP's "),
+                                Text(
+                                  controller.ups.value,
+                                  style: commonTextStyle.copyWith(
+                                      overflow: TextOverflow.ellipsis),
+                                ),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                const Text("Required Sheets"),
+                                Text(
+                                  controller.requiredSheets.value,
+                                  style: commonTextStyle.copyWith(
+                                      overflow: TextOverflow.ellipsis),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Column(
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.only(bottom: 8.0),
+                                  child: Text("Total Amount"),
+                                ),
+                                Text(
+                                  controller.result.value,
+                                  style: commonTextStyle.copyWith(
+                                      overflow: TextOverflow.ellipsis),
+                                ),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.only(bottom: 8.0),
+                                  child: Text("Per Copy"),
+                                ),
+                                Text(
+                                  controller.ratePerCopy.value,
+                                  style: commonTextStyle.copyWith(
+                                      overflow: TextOverflow.ellipsis),
+                                ),
+                              ],
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  )),
+              ElevatedButton(
                   onPressed: () {
                     controller.onCalculateButtonClick();
                   },
