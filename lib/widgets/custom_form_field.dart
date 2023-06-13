@@ -35,16 +35,16 @@ class CustomFormField extends StatelessWidget {
                 color: Colors.deepPurple,
               ),
               hintText: hintText,
-              errorStyle: const TextStyle(color: Colors.blue),
+              errorStyle: const TextStyle(color: Colors.red),
               enabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.deepPurple)),
+                  borderSide: BorderSide(color: Colors.green)),
               disabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.deepPurple)),
+                  borderSide: BorderSide(color: Colors.green)),
               focusedErrorBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.deepPurple)),
+                  borderSide: BorderSide(color: Colors.green)),
               errorBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
-                      style: BorderStyle.solid, color: Colors.deepPurple)),
+                      style: BorderStyle.solid, color: Colors.green)),
               contentPadding:
                   EdgeInsets.only(left: 0, top: 0, bottom: height * 0.02),
               border: const OutlineInputBorder(

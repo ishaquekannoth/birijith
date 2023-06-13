@@ -55,9 +55,9 @@ class CommonController extends GetxController {
     double paperWidthC,
   ) {
     int quantity1 =
-        (paperHeightM ~/ paperWidthC) + (paperWidthM ~/ paperHeightC);
+        (paperHeightM ~/ paperWidthC) * (paperWidthM ~/ paperHeightC);
     int quantity2 =
-        (paperHeightM ~/ paperHeightC) + (paperWidthM ~/ paperWidthC);
+        (paperHeightM ~/ paperHeightC) * (paperWidthM ~/ paperWidthC);
     return quantity1 > quantity2 ? quantity1 : quantity2;
   }
 

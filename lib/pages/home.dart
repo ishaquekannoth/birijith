@@ -18,6 +18,7 @@ class HomeView extends StatelessWidget {
         title: const Text("C A L C U L A T E - M E"),
       ),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Form(
           key: controller.formKey,
           child: Column(
