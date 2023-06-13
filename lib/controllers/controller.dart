@@ -19,32 +19,39 @@ class CommonController extends GetxController {
       [TextEditingController(), TextEditingController()].obs;
 
   onCalculateButtonClick() {
-    if (formKey.currentState!.validate()) {
-      ups.value = optimumQuantity(
-              double.parse(machinePaperSize[0].value.text.toString()),
-              double.parse(machinePaperSize[1].value.text.toString()),
-              double.parse(requestedPaperSize[0].value.text.toString()),
-              double.parse(requestedPaperSize[1].value.text.toString()))
-          .toString();
-      requiredSheets.value = calculateRequiredSheets(
-              int.parse(customerRequestedQty.value.text), int.parse(ups.value))
-          .toString();
-      ratePerSheet.value = calculateRatePerSheet(
-              double.parse(machinePaperSize[0].value.text),
-              double.parse(machinePaperSize[1].value.text),
-              int.parse(gsm.value.text),
-              double.parse(marketRate.value.text))
-          .toString();
-      result.value = resultCalculator(int.parse(requiredSheets.value),
-              double.parse(ratePerSheet.value), double.parse(extras.value.text))
-          .toString();
-      ratePerCopy.value = ratePerCopyCalculator(
-              double.parse(result.value),
-              double.parse(customerRequestedQty.value.text),
-              double.parse(extras.value.text))
-          .toString();
-    } else {
-      Get.snackbar("Missing data", "please Fill all filelds");
+    try {
+      if (formKey.currentState!.validate()) {
+        ups.value = optimumQuantity(
+                double.parse(machinePaperSize[0].value.text.toString()),
+                double.parse(machinePaperSize[1].value.text.toString()),
+                double.parse(requestedPaperSize[0].value.text.toString()),
+                double.parse(requestedPaperSize[1].value.text.toString()))
+            .toString();
+        requiredSheets.value = calculateRequiredSheets(
+                int.parse(customerRequestedQty.value.text),
+                int.parse(ups.value))
+            .toString();
+        ratePerSheet.value = calculateRatePerSheet(
+                double.parse(machinePaperSize[0].value.text),
+                double.parse(machinePaperSize[1].value.text),
+                int.parse(gsm.value.text),
+                double.parse(marketRate.value.text))
+            .toString();
+        result.value = resultCalculator(
+                int.parse(requiredSheets.value),
+                double.parse(ratePerSheet.value),
+                double.parse(extras.value.text))
+            .toString();
+        ratePerCopy.value = ratePerCopyCalculator(
+                double.parse(result.value),
+                double.parse(customerRequestedQty.value.text),
+                double.parse(extras.value.text))
+            .toString();
+      } else {
+        Get.snackbar("Missing data", "please Fill all filelds");
+      }
+    } on UnsupportedError {
+      Get.snackbar("oops..", "Cant divide by Zero");
     }
   }
 
