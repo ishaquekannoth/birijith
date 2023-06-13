@@ -20,7 +20,7 @@ class HomeView extends StatelessWidget {
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Form(
-          onChanged: controller.onCalculateButtonClick(),
+          
           key: controller.formKey,
           child: Column(
             children: [
